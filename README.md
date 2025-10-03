@@ -187,6 +187,8 @@ npx expo start --web
 - **Navegación**: Toca cualquier película para ver detalles completos
 - **Diseño**: Interfaz con tema oscuro y tarjetas estilizadas
 
+![Pantalla1](screenshots/pantalla1.jpg)
+
 ### Pantalla de Detalles (MovieDetailScreen):
 - **Información Completa**: Título, año, género y calificación detallada
 - **Sinopsis**: Descripción completa de la película
@@ -194,6 +196,8 @@ npx expo start --web
   - "Ver Trailer" (funcionalidad preparada para implementar)
   - "Agregar a Favoritos" (funcionalidad preparada para implementar)
 - **Navegación**: Botón de regreso para volver a la lista
+
+![Pantalla2](screenshots/pantalla2.jpg)
 
 ### Datos de Ejemplo Incluidos:
 - Avatar: The Way of Water (2022)
@@ -268,5 +272,5 @@ rm -rf node_modules package-lock.json && npm install
 ---
 
 **Desarrollado por:** Leonel Gonzalez Vidales 
-**Última actualización:** Octubre 2025  
+**Última actualización:** 3 de octubre 2025  
 **Versión:** 1.1.0
