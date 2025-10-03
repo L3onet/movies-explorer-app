@@ -7,24 +7,45 @@
 - **Periodo/Fecha:** Septiembre 2025
 - **URL del Repositorio:** https://github.com/l3onet/movies-explorer-app
 
-## 2. Propósito y Alcance del README
+## 2. Descripción del Proyecto
 
-Esta aplicación móvil permite consultar información de películas mediante una interfaz intuitiva con cartelera y detalles. Este README cubre únicamente la **creación del proyecto desde cero** y la **configuración de dependencias base** necesarias para el sistema de navegación. No incluye integración con APIs externas, autenticación de usuarios, ni funcionalidades avanzadas como favoritos persistentes o notificaciones push.
+Movies Explorer es una aplicación móvil desarrollada con React Native y Expo que permite a los usuarios explorar una cartelera de películas con información detallada. La aplicación cuenta con una interfaz moderna con tema oscuro y navegación fluida entre pantallas.
 
-## 3. Prerrequisitos y Versiones
+### Características Principales:
+- 📱 **Cartelera de Películas**: Lista de películas con información básica
+- 🎬 **Detalles de Película**: Vista detallada con sinopsis, género y calificación
+- 🎨 **Interfaz Moderna**: Diseño con tema oscuro y componentes estilizados
+- 🧭 **Navegación Intuitiva**: Sistema de navegación stack con transiciones suaves
+- 📊 **Datos de Ejemplo**: Películas precargadas para demostración
 
-### Herramientas Requeridas:
+### Funcionalidades Implementadas:
+- Lista de películas con tarjetas informativas
+- Pantalla de detalles con información completa
+- Navegación entre pantallas con botón de regreso
+- Diseño responsivo y optimizado para móviles
+- Estructura de código modular y escalable
 
-- **Sistema Operativo:** macOS 12+, Windows 10+ o Ubuntu 18.04+
+## 3. Tecnologías y Versiones Utilizadas
+
+### Stack Tecnológico:
+- **React Native:** 0.81.4
+- **React:** 19.1.0
+- **Expo:** ~54.0.3
+- **React Navigation:** v7.1.17 (Native Stack v7.3.26)
+- **React Native Screens:** ~4.16.0
+- **React Native Safe Area Context:** ~5.6.0
+
+### Herramientas de Desarrollo Requeridas:
+
 - **Node.js:** v18.17.0 o superior
   ```bash
   node --version
   ```
-- **Yarn:** v1.22.19 o NPM 9.0.0+
+- **NPM:** 9.0.0+ o Yarn v1.22.19+
   ```bash
-  yarn --version
-  # o
   npm --version
+  # o
+  yarn --version
   ```
 - **Expo CLI:** v6.3.0+
   ```bash
@@ -41,60 +62,80 @@ Esta aplicación móvil permite consultar información de películas mediante un
 npx expo doctor
 ```
 
-## 4. Creación del Proyecto desde Cero
+## 4. Estructura del Proyecto
 
-### Paso 1: Crear el proyecto base
+### Organización de Archivos:
+```
+peliculas/
+├── App.js                          # Componente principal de la aplicación
+├── app.json                        # Configuración de Expo
+├── package.json                    # Dependencias y scripts
+├── index.js                        # Punto de entrada
+├── assets/                         # Recursos estáticos
+│   ├── adaptive-icon.png
+│   ├── favicon.png
+│   ├── icon.png
+│   └── splash-icon.png
+└── src/
+    ├── components/                 # Componentes reutilizables
+    │   └── Navigation/
+    │       ├── IconBack.js
+    │       └── index.js
+    ├── navigations/                # Configuración de navegación
+    │   ├── AppNavigation.js
+    │   ├── HandlerNavigation.js
+    │   ├── index.js
+    │   └── Styles.styles.js
+    ├── screens/                    # Pantallas de la aplicación
+    │   └── Movies/
+    │       ├── index.js
+    │       ├── MovieDetailScreen.js
+    │       └── MoviesListScreen.js
+    └── utils/                      # Utilidades y constantes
+        ├── index.js
+        └── screens.js
+```
+
+### Arquitectura de la Aplicación:
+- **App.js**: Componente raíz con NavigationContainer
+- **AppNavigation.js**: Configuración del Stack Navigator
+- **MoviesListScreen.js**: Pantalla principal con lista de películas
+- **MovieDetailScreen.js**: Pantalla de detalles de película individual
+- **screens.js**: Constantes para nombres de pantallas
+
+## 5. Instalación y Configuración
+
+### Instalación de Dependencias:
 ```bash
-npx create-expo-app MoviesExplorerApp --template blank
-cd MoviesExplorerApp
+# Clonar el repositorio
+git clone https://github.com/l3onet/movies-explorer-app
+cd movies-explorer-app
+
+# Instalar dependencias
+npm install
 ```
 
-### Paso 2: Verificar estructura generada
-El comando anterior debe generar la siguiente estructura mínima:
-```
-MoviesExplorerApp/
-├── App.js
-├── app.json
-├── package.json
-├── babel.config.js
-└── assets/
-    ├── favicon.png
-    ├── icon.png
-    └── splash.png
-```
-
-### Paso 3: Verificación de arranque inicial
-```bash
-npx expo start
-```
-**Nota de verificación:** Debe aparecer el QR code y el mensaje "Metro waiting on exp://[IP]:8081". Si aparece la pantalla blanca con "Open up App.js to start working on your app!", la instalación base es exitosa.
-
-## 5. Dependencias Base y su Propósito
-
-### Dependencias de Navegación:
-```bash
-npm install @react-navigation/native@6.1.9 @react-navigation/native-stack@6.9.17
-npx expo install react-native-screens@3.25.0 react-native-safe-area-context@4.7.4
-```
-
-### Tabla de Dependencias:
+### Dependencias del Proyecto:
 
 | Dependencia | Versión | Propósito |
 |-------------|---------|-----------|
-| `@react-navigation/native` | 6.1.9 | Core de navegación entre pantallas, manejo de estado de navegación |
-| `@react-navigation/native-stack` | 6.9.17 | Stack navigator para navegación jerárquica (Lista → Detalles) |
-| `react-native-screens` | 3.25.0 | Optimización de rendimiento para transiciones nativas |
-| `react-native-safe-area-context` | 4.7.4 | Manejo de áreas seguras (notch, barras de estado) |
-| `expo-status-bar` | ~1.6.0 | Control de apariencia de barra de estado (incluida por defecto) |
+| `@react-navigation/native` | ^7.1.17 | Core de navegación entre pantallas, manejo de estado de navegación |
+| `@react-navigation/native-stack` | ^7.3.26 | Stack navigator para navegación jerárquica (Lista → Detalles) |
+| `react-native-screens` | ~4.16.0 | Optimización de rendimiento para transiciones nativas |
+| `react-native-safe-area-context` | ~5.6.0 | Manejo de áreas seguras (notch, barras de estado) |
+| `expo-status-bar` | ~3.0.8 | Control de apariencia de barra de estado |
+| `expo` | ~54.0.3 | Framework de desarrollo móvil |
+| `react` | 19.1.0 | Biblioteca de interfaz de usuario |
+| `react-native` | 0.81.4 | Framework de desarrollo móvil multiplataforma |
 
 ### Verificar instalación:
 ```bash
 npm list --depth=0
 ```
 
-## 6. Scripts de Ejecución y Build (Yarn/NPM)
+## 6. Ejecución de la Aplicación
 
-### Scripts Principales:
+### Scripts Disponibles:
 ```bash
 # Iniciar servidor de desarrollo
 npm start
@@ -115,86 +156,117 @@ npx expo start --ios
 npm run web
 # o
 npx expo start --web
-
-# Build para producción (requiere EAS)
-npx eas build --platform android
-npx eas build --platform ios
 ```
+
+### Primera Ejecución:
+1. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+2. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm start
+   ```
+
+3. **Conectar dispositivo:**
+   - **Android:** Usar Expo Go o emulador
+   - **iOS:** Usar Expo Go o simulador
+   - **Web:** Se abrirá automáticamente en el navegador
 
 ### Notas de Entorno:
 - **Emulador Android:** Debe estar iniciado antes de ejecutar `npm run android`
 - **Dispositivo físico:** Usar Expo Go y escanear QR code
 - **Túnel para redes restrictivas:** `npx expo start --tunnel`
 
-## 7. Ejecución en Android/iOS (Expo / Emulador / Físico)
+## 7. Funcionalidades de la Aplicación
 
-### Opción A: Dispositivo Físico con Expo Go
+### Pantalla Principal (MoviesListScreen):
+- **Lista de Películas**: Muestra una colección de películas en formato de tarjetas
+- **Información Básica**: Título, año, género y calificación de cada película
+- **Navegación**: Toca cualquier película para ver detalles completos
+- **Diseño**: Interfaz con tema oscuro y tarjetas estilizadas
 
-1. **Instalar Expo Go:**
-   - Android: [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
-   - iOS: [App Store](https://apps.apple.com/app/expo-go/id982107779)
+### Pantalla de Detalles (MovieDetailScreen):
+- **Información Completa**: Título, año, género y calificación detallada
+- **Sinopsis**: Descripción completa de la película
+- **Botones de Acción**: 
+  - "Ver Trailer" (funcionalidad preparada para implementar)
+  - "Agregar a Favoritos" (funcionalidad preparada para implementar)
+- **Navegación**: Botón de regreso para volver a la lista
 
-2. **Ejecutar proyecto:**
-   ```bash
-   npx expo start
-   ```
+### Datos de Ejemplo Incluidos:
+- Avatar: The Way of Water (2022)
+- Top Gun: Maverick (2022)
+- Black Panther: Wakanda Forever (2022)
+- Jurassic World Dominion (2022)
 
-3. **Conectar dispositivo:**
-   - **Android:** Escanear QR code con Expo Go
-   - **iOS:** Usar cámara para escanear QR code
+### Características Técnicas:
+- **Navegación Stack**: Transiciones suaves entre pantallas
+- **Diseño Responsivo**: Optimizado para diferentes tamaños de pantalla
+- **Tema Oscuro**: Interfaz moderna con colores oscuros
+- **Componentes Modulares**: Código organizado y reutilizable
 
-### Opción B: Emulador Android
+## 8. Desarrollo y Extensión
 
-1. **Configurar Android Studio:**
-   - Crear AVD (Android Virtual Device) con API 33+
-   - Iniciar emulador antes de ejecutar el proyecto
+### Próximas Funcionalidades Sugeridas:
+- **Integración con API**: Conectar con TMDB o similar para datos reales
+- **Sistema de Favoritos**: Persistencia local con AsyncStorage
+- **Búsqueda**: Filtrado y búsqueda de películas
+- **Categorías**: Organización por géneros
+- **Trailers**: Integración con YouTube API
+- **Notificaciones**: Alertas de nuevas películas
 
-2. **Ejecutar en emulador:**
-   ```bash
-   npx expo start --android
-   ```
-
-### Nota de Permisos:
-- **Android:** Activar "Instalación de fuentes desconocidas" para Expo Go
-- **Firewall:** Permitir conexiones en puerto 8081 y 19000-19002
-
-### Problemas Típicos:
-- **Puerto ocupado:** `npx expo start --port 8082`
-- **ADB no reconoce dispositivo:** `adb kill-server && adb start-server`
-- **Metro cache:** `npx expo start --clear`
-
-## 8. Troubleshooting Básico
-
-### Problemas Comunes y Soluciones:
-
-| Problema | Síntoma | Solución |
-|----------|---------|----------|
-| **Error de instalación NPM** | "npm ERR! peer dep missing" | `npm install --legacy-peer-deps` |
-| **SDK Android no encontrado** | "Android SDK not found" | Verificar ANDROID_HOME en variables de entorno |
-| **Expo Go no conecta** | QR funciona pero no carga app | Verificar que dispositivo y PC estén en misma red WiFi |
-| **Metro bundler falla** | "Metro has encountered an error" | `npx expo start --clear` para limpiar cache |
-| **Dependencias desactualizadas** | Warnings en consola | `npx expo doctor` y seguir recomendaciones |
-
-### Comandos de Verificación:
-```bash
-# Verificar entorno completo
-npx expo doctor
-
-# Limpiar cache de Metro
-npx expo start --clear
-
-# Reinstalar node_modules
-rm -rf node_modules package-lock.json && npm install
-
-# Verificar puertos disponibles
-npx expo start --port 8082
+### Estructura para Nuevas Pantallas:
+```javascript
+// Ejemplo de nueva pantalla
+export function NewScreen() {
+  const navigation = useNavigation();
+  
+  return (
+    <View style={styles.container}>
+      {/* Contenido de la pantalla */}
+    </View>
+  );
+}
 ```
 
-### Recursos Adicionales:
-- [Documentación oficial de Expo](https://docs.expo.dev/)
-- [React Navigation Docs](https://reactnavigation.org/docs/getting-started)
-- [Troubleshooting Expo](https://docs.expo.dev/troubleshooting/overview/)
+### Agregar Nuevas Rutas:
+1. Actualizar `src/utils/screens.js` con nuevas constantes
+2. Agregar Screen en `src/navigations/AppNavigation.js`
+3. Crear componente en `src/screens/`
+
+## 9. Troubleshooting
+
+### Problemas Comunes:
+| Problema | Solución |
+|----------|----------|
+| **Error de instalación** | `npm install --legacy-peer-deps` |
+| **Metro cache corrupto** | `npx expo start --clear` |
+| **Puerto ocupado** | `npx expo start --port 8082` |
+| **Dependencias desactualizadas** | `npx expo doctor` |
+
+### Comandos Útiles:
+```bash
+# Verificar entorno
+npx expo doctor
+
+# Limpiar cache
+npx expo start --clear
+
+# Reinstalar dependencias
+rm -rf node_modules package-lock.json && npm install
+```
+
+## 10. Recursos y Documentación
+
+- [Documentación de Expo](https://docs.expo.dev/)
+- [React Navigation](https://reactnavigation.org/)
+- [React Native Docs](https://reactnative.dev/)
+- [Expo Components](https://docs.expo.dev/versions/latest/)
 
 ---
 
-**Última actualización:** Septiembre 25, 2025
+**Desarrollado por:** Leonel Gonzalez Vidales 
+**Última actualización:** Octubre 2025  
+**Versión:** 1.1.0
